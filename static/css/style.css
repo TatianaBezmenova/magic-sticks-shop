@@ -1,0 +1,12 @@
+body {
+    width: 90%;
+    margin: 20px auto;
+    font-family: "Open Sans", Helvetica, Arial;
+}
+.page-wrapper {
+
+}
+
+.product_image {
+    max-width: 300px;
+}
