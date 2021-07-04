@@ -11,13 +11,16 @@
 {% block content %}
     <div>Категория: {{object.type.name}}</div>
     <div>Цена: {{object.price}} GP</div>
-    <div>
-        <img class="product_image" src="{{object.img.url}}">
-    </div>
+
+    {% if object.img %}
+        <div>
+            <img class="product_image" src="{{object.img.url}}">
+        </div>
+    {% endif %}
     <h3>Также может вас заинтересовать</h3>
     <ul>
-    {% for product in more_products %}
-        <li><a href="{{product.get_absolute_url}}">{{product.name}}</a></li>
-    {% endfor %}
+        {% for product in more_products %}
+            <li><a href="{{product.get_absolute_url}}">{{product.name}}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}
