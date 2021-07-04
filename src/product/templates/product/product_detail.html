@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block header %}
-    Купить {{object.name}}
+    Купить <span class="text-selection">{{object.name}}</span>
 {% endblock %}
 
 {% block content %}
-    <div>Категория: {{object.type.name}}</div>
+    <div>Категория: <a href="{{object.type.get_absolute_url}}">{{object.type.name}}</a></div>
     <div>Цена: {{object.price}} GP</div>
 
     {% if object.img %}

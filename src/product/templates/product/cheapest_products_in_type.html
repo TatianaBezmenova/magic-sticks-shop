@@ -1,0 +1,17 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Самые дешевые продукты в категории {{object.name}}
+{% endblock %}
+
+{% block header %}
+    Самые дешевые продукты в категории <span class="text-selection">{{object.name}}</span>
+{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for product in product_list %}
+        <li><a href="{{product.get_absolute_url}}">{{product.name}}</a> {{product.price}} GP</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

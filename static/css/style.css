@@ -1,12 +1,71 @@
-body {
-    width: 90%;
-    margin: 20px auto;
-    font-family: "Open Sans", Helvetica, Arial;
+:root {
+    --color-gray: #5D535E;
+    --color-gray-dark: #332a34;
+    --color-gray-light: #9A9EAB;
+    --color-primary-dark: #aaae35;
+    --color-primary: #DFE166;
+    --color-secondary: #2D1A65;
+    --color-secondary-light: #9582CD;
 }
-.page-wrapper {
 
+*,
+*::before,
+*::after {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-gray-dark);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0px auto;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: var(--color-gray);
+}
+
+.section_content a:hover {
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    padding: 3px 0px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to top, var(--color-primary), var(--color-primary-dark));
+    padding: 0px 20px 10px;
+}
+
+.header_name a {
+    font-size: 2em;
+}
+
+.section_content {
+    padding: 20px;
+}
+
+.section_content h3 {
+    margin: 16px 0px;
 }
 
 .product_image {
     max-width: 300px;
+}
+
+.text-selection {
+    background-color: var(--color-secondary-light);
+    padding: 3px 10px;
+    border-radius: 3px;
 }

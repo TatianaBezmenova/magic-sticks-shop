@@ -18,3 +18,11 @@ def product_type_detail(request, slug):
         'object': product_type,
         'product_list': product_list,
     })
+
+def cheapest_products_in_type(request, slug):
+    product_type = get_object_or_404(ProductType, slug=slug)
+    product_list = Product.objects.filter(type=product_type).order_by('price')[:50]
+    return render(request, 'product/cheapest_products_in_type.html', {
+        'object': product_type,
+        'product_list': product_list,
+    })
