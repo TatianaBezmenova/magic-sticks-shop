@@ -6,12 +6,14 @@ import debug_toolbar
 import mimetypes
 
 from about.views import show_about, show_mission
+from shop.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', show_about),
     path('about/mission/', show_mission),
     path('product/', include(('product.urls', 'product'))),
+    path('', index, name='index'),
 ]
 
 if settings.DEBUG:

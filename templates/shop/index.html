@@ -1,0 +1,18 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block header %}
+    Магазин Волшебных палочек
+{% endblock %}
+
+{% block content %}
+    <h4>Категории товаров</h4>
+    <ul>
+        {% for  product_type in product_type_list %}
+            <li><a href="{{product_type.get_absolute_url}}">{{product_type.name}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
