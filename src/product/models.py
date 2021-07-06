@@ -20,7 +20,7 @@ class ProductType(models.Model):
 
 class ProductManager(models.Manager):
     def get_queryset(self):
-        return super().filter(is_visible=True)
+        return super().get_queryset().filter(is_visible=True)
 
 
 class Product(models.Model):

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import QuerySet
 from .models import ProductType, Product
 from typing import Iterable
 from decimal import Decimal
@@ -13,14 +14,14 @@ class ProductTypeAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     ordering = ['name']
-    list_display = ['name', 'type', 'price', 'is_visible']
+    list_display = ['id', 'name', 'type', 'price', 'is_visible']
     search_fields = ['name']
     list_filter = [
         ('type', admin.RelatedFieldListFilter),
         ('is_visible', admin.BooleanFieldListFilter),
     ]
 
-    actions = ['do_sale_10', 'regenerate_new_name']
+    actions = ['do_sale_10', 'regenerate_new_name', 'make_not_visible', 'make_visible']
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('type')
@@ -41,3 +42,11 @@ class ProductAdmin(admin.ModelAdmin):
             quality = choice(Command.QUALITY)
             obj.name = f'{name.capitalize()} {mat} ({quality})'
             obj.save(update_fields=['name'])
+
+    @admin.action
+    def make_not_visible(self, request, queryset: QuerySet):
+        queryset.update(is_visible=False)
+
+    @admin.action
+    def make_visible(self, request, queryset: QuerySet):
+        queryset.update(is_visible=True)
