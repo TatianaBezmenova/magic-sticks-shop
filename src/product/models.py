@@ -18,12 +18,21 @@ class ProductType(models.Model):
         return reverse_lazy('product:product_type_detail', kwargs={'slug': self.slug})
 
 
+class ProductManager(models.Manager):
+    def get_queryset(self):
+        return super().filter(is_visible=True)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, db_index=True, verbose_name='Название')
     type = models.ForeignKey(ProductType, on_delete=models.SET_NULL, null=True, blank=False, verbose_name='Тип')
     price = models.DecimalField(max_digits=8, decimal_places=2, null=False, blank=False, db_index=True,
                                 verbose_name='Цена')
     img = models.ImageField(upload_to='product', null=True, blank=True, verbose_name='Изображение')
+    is_visible = models.BooleanField(default=True, db_index=True, verbose_name='Показывать продукт')
+
+    objects = models.Manager()
+    public_objects = ProductManager()
 
     class Meta:
         ordering = ('-id',)

@@ -13,10 +13,11 @@ class ProductTypeAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     ordering = ['name']
-    list_display = ['name', 'type', 'price']
+    list_display = ['name', 'type', 'price', 'is_visible']
     search_fields = ['name']
     list_filter = [
-        ('type', admin.RelatedFieldListFilter)
+        ('type', admin.RelatedFieldListFilter),
+        ('is_visible', admin.BooleanFieldListFilter),
     ]
 
     actions = ['do_sale_10', 'regenerate_new_name']
