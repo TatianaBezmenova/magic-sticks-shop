@@ -1,14 +1,29 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import DetailView, ListView
 from .models import Product, ProductType
 
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, id=pk)
-    more_products = Product.public_objects.filter(type=product.type).exclude(id=product.id)[:10]
-    return render(request, 'product/product_detail.html', {
-        'object': product,
-        'more_products': more_products,
-    })
+class ProductDetailView(DetailView):
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        product = context['object']
+        context['more_products'] = Product.public_objects.filter(type=product.type).exclude(id=product.id)[:10]
+        return context
+
+
+# def product_detail(request, pk):
+#     product = get_object_or_404(Product, id=pk)
+#     more_products = Product.public_objects.filter(type=product.type).exclude(id=product.id)[:10]
+#     return render(request, 'product/product_detail.html', {
+#         'object': product,
+#         'more_products': more_products,
+#     })
+
+class ProductListView(ListView):
+    model = Product
+    paginate_by = 20
 
 
 def product_type_detail(request, slug):

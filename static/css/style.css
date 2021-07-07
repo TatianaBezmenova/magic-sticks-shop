@@ -2,8 +2,10 @@
     --color-gray: #5D535E;
     --color-gray-dark: #332a34;
     --color-gray-light: #9A9EAB;
+    /*yellow*/
     --color-primary-dark: #aaae35;
     --color-primary: #DFE166;
+    --color-primary-light: #dfe166ab;
     --color-secondary: #2D1A65;
     --color-secondary-light: #9582CD;
 }
@@ -12,7 +14,6 @@
 *::before,
 *::after {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--color-gray-dark);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -31,20 +32,24 @@ a {
     text-decoration: none;
 }
 
+.header a {
+    color: var(--color-primary);
+}
+
 .header a:hover {
-    color: var(--color-gray);
+    color: var(--color-primary-dark);
 }
 
 .section_content a:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-light);
     border-radius: 3px;
-    padding: 3px 0px;
+    padding: 1px 0px;
 }
 
 .header {
     display: flex;
     align-items: center;
-    background: linear-gradient(to top, var(--color-primary), var(--color-primary-dark));
+    background: linear-gradient(to top, var(--color-gray), var(--color-gray-dark));
     padding: 0px 20px 10px;
 }
 
@@ -58,6 +63,12 @@ a {
 
 .section_content h3 {
     margin: 16px 0px;
+}
+
+.product-card {
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid var(--color-gray-light);
 }
 
 .product_image {

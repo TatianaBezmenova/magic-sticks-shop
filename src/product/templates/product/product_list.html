@@ -1,0 +1,20 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Список продуктов
+{% endblock %}
+
+{% block header %}
+    Список продуктов
+{% endblock %}
+
+{% block content %}
+    {% for object in object_list%}
+        <div class="product-card">
+            <h4>{{object.name}}</h4>
+            <div>Категория: <a href="{{object.type.get_absolute_url}}">{{object.type.name}}</a></div>
+            <div>Цена: {{object.price}} GP</div>
+            <div><a href="{{object.get_absolute_url}}">Перейти к товару &rarr;</a></div>
+        </div>
+    {% endfor %}
+{% endblock %}
