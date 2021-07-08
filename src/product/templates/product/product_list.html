@@ -9,6 +9,31 @@
 {% endblock %}
 
 {% block content %}
+    <form action="{% url 'product:product_list' %}" method="get">
+        <div>
+            <div class="search-form-row">
+                <div class="search-form-label">Тип</div>
+                <div>
+                    <select name="type">
+                        {% for type in product_type_list %}
+                            <option value="{{type.id}}">{{type.name}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+            </div>
+            <div class="search-form-row">
+                <div class="search-form-label">Цена от</div>
+                <div>
+                    <input type="number" name="price_start">
+                    до <input type="number" name="price_end">
+                </div>
+            </div>
+        </div>
+
+        <button class="button" type="submit">Отфильтровать</button>
+        <button class="button"><a href="{% url 'product:product_list' %}">Сбросить</a></button>
+    </form>
+
     {% for object in object_list%}
         <div class="product-card">
             <h4>{{object.name}}</h4>
