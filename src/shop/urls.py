@@ -13,6 +13,7 @@ urlpatterns = [
     path('about/', show_about),
     path('about/mission/', show_mission),
     path('product/', include(('product.urls', 'product'))),
+    path('order/', include(('order.urls', 'order'))),
     path('', index, name='index'),
 ]
 

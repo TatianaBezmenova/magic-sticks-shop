@@ -23,6 +23,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     status = models.CharField(max_length=32, choices=STATUS_CHOICES, default=STATUS_PREPARE, db_index=True,
                               verbose_name='Статус')
+    text = models.TextField(verbose_name='Комментарий к заказу')
 
 
 def __str__(self):

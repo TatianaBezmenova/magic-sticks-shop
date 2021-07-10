@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import FormView
 
-# Create your views here.
+from .forms import OrderForm
+
+class OrderFormView(FormView):
+    template_name = 'order/order_form.html'
+    form_class = OrderForm

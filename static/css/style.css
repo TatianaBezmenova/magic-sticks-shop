@@ -36,13 +36,13 @@ a {
 }
 
 .header a {
-    background: -webkit-linear-gradient(45deg, var(--color-yellow), var(--color-pink));
+    background: -webkit-linear-gradient(45deg, var(--color-yellow) 70%, var(--color-pink));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .header a:hover {
-    background: -webkit-linear-gradient(45deg, var(--color-pink), var(--color-yellow));
+    background: -webkit-linear-gradient(45deg, var(--color-pink) 70%, var(--color-yellow));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -58,6 +58,7 @@ a {
     align-items: center;
     background: linear-gradient(to top, var(--color-gray), var(--color-gray-dark));
     padding: 0px 20px 10px;
+    color: whitesmoke;
 }
 
 .header_name a {

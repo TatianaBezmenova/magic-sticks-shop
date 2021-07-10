@@ -1,0 +1,24 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Страница заказа
+{% endblock %}
+
+{% block header %}
+   Оформить заказ
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'order:order_form' %}" method="post">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="button">Заказать</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
