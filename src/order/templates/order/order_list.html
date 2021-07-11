@@ -1,0 +1,25 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+Мои заказы
+{% endblock %}
+
+{% block header %}
+Мои заказы
+{% endblock %}
+
+{% block content %}
+    {% if user.is_anonymous%}
+        <div>История заказов доступна для зарегистрированных пользователей</div>
+    {% else %}
+        {% for order in object_list %}
+            <div>
+                <div>Заказ #{{ order.id }} от {{ order.created_at }}</div>
+                <div>Контактный номер: {{ order.phone }}</div>
+                <div>Комментарий: {{ order.text }}</div>
+            </div>
+            {% empty %}
+                <div>Заказов нет</div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

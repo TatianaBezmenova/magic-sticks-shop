@@ -26,8 +26,8 @@ class Order(models.Model):
     text = models.TextField(verbose_name='Комментарий к заказу')
 
 
-def __str__(self):
-    return f'Заказ #{self.id}'
+    def __str__(self):
+        return f'Заказ #{self.id}'
 
 
 class Basket(models.Model):

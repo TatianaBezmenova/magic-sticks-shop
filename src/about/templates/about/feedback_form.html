@@ -1,0 +1,24 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Страница обратной связи
+{% endblock %}
+
+{% block header %}
+   Страница обратной связи
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'feedback_form' %}" method="post">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="button">Отправить</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

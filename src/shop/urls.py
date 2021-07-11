@@ -7,11 +7,13 @@ import mimetypes
 
 from about.views import show_about, show_mission
 from shop.views import index
+from about.views import FeedbackFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', show_about),
     path('about/mission/', show_mission),
+    path('about/feedback/', FeedbackFormView.as_view(), name='feedback_form'),
     path('product/', include(('product.urls', 'product'))),
     path('order/', include(('order.urls', 'order'))),
     path('', index, name='index'),
