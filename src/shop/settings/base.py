@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'shop.middleware.html_optimize',
+    'shop.middleware.add_banner',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'user.middleware.timing_logout',
 ]
 
 ROOT_URLCONF = 'shop.urls'
@@ -105,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'user.User'
-
+LOGOUT_TIMEOUT = 60
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -118,7 +123,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

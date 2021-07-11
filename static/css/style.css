@@ -124,3 +124,12 @@ select {
     color: white;
     background-color: transparent;
 }
+
+.banner {
+    padding: 20px 0px;
+    margin: 10px;
+    text-align: center;
+    background-color: var(--color-gray);
+    color: whitesmoke;
+    width: 300px;
+}
