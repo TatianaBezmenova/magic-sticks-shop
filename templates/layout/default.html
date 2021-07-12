@@ -13,6 +13,13 @@
             <div class="header_name"><a href="{% url 'index' %}">Мазагин волшебных палочек</a></div>
             <div class="header_slogan">Лучшее палочки и не только</div>
         </div>
+        <div class="header_login">
+            {% if user.is_anonymous %}
+                <a href="{% url 'user:login' %}">Войти</a>
+            {% else %}
+                <a href="{% url 'user:detail' user.username %}">{{user.username}}</a>
+            {% endif %}
+        </div>
     </header>
     <section class="section_content">
         <h3>{% block header %}{% endblock %}</h3>

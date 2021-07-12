@@ -25,12 +25,11 @@ def html_optimize(get_response):
 
 def add_banner(get_response):
     """
-        Добавляет рекламнный баннер на все страницы сайта
+        Добавляет рекламный баннер на все страницы сайта
     """
 
     def middleware(request):
         response: HttpResponse = get_response(request)
-
 
         response.content += '<div class="banner">Реклама</div>'.encode()
         response['Content-Length'] = len(response.content)

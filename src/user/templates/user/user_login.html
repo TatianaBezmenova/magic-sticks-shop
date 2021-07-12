@@ -1,0 +1,25 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Страница входа
+{% endblock %}
+
+{% block header %}
+    Вход на сайт
+{% endblock %}
+
+{% block content %}
+<form action="?next={{ next }}" method="post">
+    <table>
+        {% csrf_token%}
+        {{ form }}
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="button">Войти</button>
+                <button class="button"><a href="{% url 'user:reg' %}">Регистрация</a></button>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

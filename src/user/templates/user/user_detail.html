@@ -1,0 +1,21 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Пользователь {{object.username}}
+{% endblock %}
+
+{% block header %}
+    Пользователь {{object.username}}
+{% endblock %}
+
+{% block content %}
+    <div>Имя: {{object.first_name}}</div>
+    <div>Фамилия: {{object.last_name}}</div>
+    {% if user == object %}
+        <button class="button"><a href="{% url 'user:edit' object.username %}" >Отредактировать</a></button>
+        <form action="{% url 'user:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="button">Выйти</button>
+        </form>
+    {% endif %}
+{% endblock %}

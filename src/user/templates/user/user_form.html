@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout/default.html" %}
 
-</body>
-</html>
+{% block title %}
+Пользователь {{object.username}}
+{% endblock %}
+
+{% block header %}
+Пользователь {{object.username}}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+
+            <tr>
+                <td></td>
+                <td><button type="submit" class="button">Сохранить</button></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

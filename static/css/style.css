@@ -55,6 +55,7 @@ a {
 
 .header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background: linear-gradient(to top, var(--color-gray), var(--color-gray-dark));
     padding: 0px 20px 10px;
@@ -64,6 +65,10 @@ a {
 .header_name a {
     font-size: 2em;
     font-weight: bolder;
+}
+
+.header_login {
+    font-weight: bold;
 }
 
 .section_content {
@@ -132,4 +137,9 @@ select {
     background-color: var(--color-gray);
     color: whitesmoke;
     width: 300px;
+}
+
+th {
+    text-align: start;
+    vertical-align: top;
 }

@@ -16,6 +16,7 @@ urlpatterns = [
     path('about/feedback/', FeedbackFormView.as_view(), name='feedback_form'),
     path('product/', include(('product.urls', 'product'))),
     path('order/', include(('order.urls', 'order'))),
+    path('user/', include(('user.urls', 'user'))),
     path('', index, name='index'),
 ]
 

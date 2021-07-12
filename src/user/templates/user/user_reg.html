@@ -1,0 +1,25 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+  Регистрация
+{% endblock %}
+
+{% block header %}
+  Регистрация
+{% endblock %}
+
+{% block content %}
+<form action="?next={{ next }}" method="post">
+    <table>
+        {% csrf_token %}
+        {{ form }}
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="button">Регистрация</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+{% endblock %}
