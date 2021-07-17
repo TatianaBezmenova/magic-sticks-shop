@@ -4,6 +4,8 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.auth.views import LoginView, FormView
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from urllib.parse import quote
 
 from .models import User
 from .forms import UserRegForm
@@ -21,7 +23,12 @@ class UserUpdateView(UpdateView):
     fields = ['email', 'first_name', 'last_name']
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user != self.get_object():
+        if request.user.is_anonymous:
+            return HttpResponseRedirect(
+                f'{settings.LOGIN_URL}?next={quote(request.path)}'
+            )
+
+        if request.user != self.get_object() and not request.user.is_superuser:
             return HttpResponseForbidden()
 
         return super().dispatch(request, *args, **kwargs)

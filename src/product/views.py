@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
 from django.views.generic import View
+from django.http import HttpResponse, HttpResponseRedirect
+from django.db.transaction import atomic
 
 from .models import Product, ProductType
 
 import logging
 
 log = logging.getLogger(__name__)
+
 
 class ProductDetailView(DetailView):
     model = Product
@@ -46,6 +49,26 @@ class ProductListView(ListView):
         context = super().get_context_data()
         context['product_type_list'] = ProductType.objects.all()
         return context
+
+
+class ProductAddView(View):
+    def get(self, request, *args, **kwargs):
+        product_type_list = ProductType.objects.all()
+        return render(request, 'product/product_add.html', {
+            'product_type_list': product_type_list,
+        })
+
+    def post(self, request, *args, **kwargs):
+        params = request.POST
+        with atomic() as trn:
+            obj = {
+                'type': ProductType.objects.get(id=int(params['type'])),
+                'name': params['name'],
+                'price': float(params['price'])
+            }
+            Product.objects.create(**obj)
+
+        return self.get(request, *args, **kwargs)
 
 
 def product_type_detail(request, slug):

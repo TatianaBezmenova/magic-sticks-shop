@@ -1,0 +1,37 @@
+{% extends "layout/default.html" %}
+
+{% block title %}
+    Добавление товара
+{% endblock %}
+
+{% block header %}
+    Добавление товара
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <div>Наименование товара</div>
+                <div><input type="text" name="name"></div>
+            </div>
+            <div>
+                <div>Тип товара</div>
+                <div>
+                    <select name="type">
+                        {% for type in product_type_list %}
+                            <option value="{{type.id}}">{{type.name}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div>Цена</div>
+                <div><input type="number" name="price"></div>
+            </div>
+            <button type="submit" class="button">Добавить</button>
+        </form>
+    </div>
+
+{% endblock %}

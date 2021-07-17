@@ -72,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'product.context_processors.categories',
             ],
         },
     },
@@ -110,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'user.User'
-LOGOUT_TIMEOUT = 60
+LOGOUT_TIMEOUT = 600
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 

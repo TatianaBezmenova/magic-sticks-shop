@@ -1,22 +1,21 @@
 :root {
-    --color-gray: #5D535E;
-    --color-gray-dark: #332a34;
-    --color-gray-light: #9A9EAB;
-    /*yellow*/
-    /* --color-primary-dark: #aaae35;
-    --color-primary: #DFE166;
-    --color-primary-light: #dfe166ab;
-    --color-secondary: #2D1A65;
-    --color-secondary-light: #9582CD; */
-    --color-pink: #af4261;
-    --color-pink-light: #af426167;
-    --color-yellow: #f3ec78;
+    --color-gray-dark: rgb(35, 38, 50);
+    --color-gray-light: rgb(64, 69, 83);
+    --color-blue-light: #18b2b8;
+    --color-blue: rgb(87, 132, 187);
+    --color-blue-30: rgba(87, 132, 187, 0.3);
+    --color-blue-dark: #245fc7;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url(../fonts/Montserrat-Medium.ttf);
 }
 
 *,
 *::before,
 *::after {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat-Medium', 'Segoe UI', Tahoma, Verdana, sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -33,42 +32,58 @@ li {
 
 a {
     text-decoration: none;
+    color: #000;
 }
 
 .header a {
-    background: -webkit-linear-gradient(45deg, var(--color-yellow) 70%, var(--color-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: whitesmoke;
 }
 
 .header a:hover {
-    background: -webkit-linear-gradient(45deg, var(--color-pink) 70%, var(--color-yellow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.header a:link {
+    color: whitesmoke;
 }
 
 .section_content a:hover {
-    background-color: var(--color-yellow);
+    background-color: var(--color-blue-30);
+    padding: 1px 3px;
     border-radius: 3px;
-    padding: 1px 0px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to top, var(--color-gray), var(--color-gray-dark));
-    padding: 0px 20px 10px;
+    /* background: linear-gradient(to left, var(--color-blue-dark), var(--color-blue), var(--color-blue-light)); */
+    background: linear-gradient(115deg, #18b2b8 5%, #245fc7 95%);
+    /* background-color: var(--color-blue); */
+    /* padding: 0px 20px 10px; */
     color: whitesmoke;
+    padding: 30px 40px;
 }
 
 .header_name a {
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: bolder;
 }
 
 .header_login {
     font-weight: bold;
+}
+
+.header_page-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_page-nav-item {
+    margin: 10px;
 }
 
 .section_content {
@@ -89,10 +104,18 @@ a {
     max-width: 300px;
 }
 
+.another-products {
+    margin-top: 50px;
+}
+
+.another-products_header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .text-selection {
-    background-color: var(--color-pink-light);
-    padding: 1px 10px;
-    border-radius: 3px;
+    font-weight: bold;
+    color: tomato;
 }
 
 .search-form-row {
@@ -112,34 +135,53 @@ select {
 
 .button {
     border-radius: 3px;
-    color: white;
-    background: var(--color-pink);
-    padding: 3px 15px;
+    color: whitesmoke;
+    background: var(--color-blue-light);
+    padding: 5px 20px;
+    font-weight: bold;
+    min-width: 140px;
+    outline: none;
+    border: none;
 }
 
 .button:hover {
-    background: -webkit-linear-gradient(45deg, var(--color-pink), var(--color-pink-light));
+    background-color: #139971;
 }
 
 .button a {
-    color: white;
+    color: whitesmoke;
 }
 
 .button a:hover {
-    color: white;
+    color: whitesmoke;
     background-color: transparent;
+}
+
+.banners {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 10px;
 }
 
 .banner {
     padding: 20px 0px;
-    margin: 10px;
     text-align: center;
-    background-color: var(--color-gray);
+    background-color: var(--color-gray-light);
     color: whitesmoke;
-    width: 300px;
+    width: 32%;
 }
 
-th {
+form th {
     text-align: start;
     vertical-align: top;
+}
+
+form input,
+form select {
+    width: 285px;
+    height: 32px;
+    outline: none;
+    border: none;
+    padding: 0 15px;
+    background-color: var(--color-blue-30);
 }

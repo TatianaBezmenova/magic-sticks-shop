@@ -31,7 +31,11 @@ def add_banner(get_response):
     def middleware(request):
         response: HttpResponse = get_response(request)
 
-        response.content += '<div class="banner">Реклама</div>'.encode()
+        response.content += '<div class="banners">' \
+                                '<div class="banner">Объявление</div>' \
+                                '<div class="banner">Объявление</div>' \
+                                '<div class="banner">Реклама</div>' \
+                            '</div>'.encode()
         response['Content-Length'] = len(response.content)
         return response
 

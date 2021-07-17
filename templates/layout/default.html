@@ -3,15 +3,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мазагин волшебных палочек: {% block title %}{% endblock%}</title>
+    <title>Магазин волшебных палочек: {% block title %}{% endblock%}</title>
     <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
 <div class="page-wrapper">
     <header class="header">
         <div>
-            <div class="header_name"><a href="{% url 'index' %}">Мазагин волшебных палочек</a></div>
+            <div class="header_name"><a href="{% url 'index' %}">Магазин волшебных палочек</a></div>
             <div class="header_slogan">Лучшее палочки и не только</div>
+        </div>
+        <div class="header_page-nav">
+            {% for category in categories%}
+                <div class="header_page-nav-item">
+                    <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                </div>
+            {% endfor %}
         </div>
         <div class="header_login">
             {% if user.is_anonymous %}

@@ -17,4 +17,14 @@
             <img class="product_image" src="{{object.img.url}}">
         </div>
     {% endif %}
+
+    <div class="another-products">
+        <div class="another-products_header">Также вас может заинтересовать:</div>
+        <ul>
+            {% for product in more_products %}
+            <li><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
 {% endblock %}
